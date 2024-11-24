@@ -1,0 +1,9 @@
+/* Variável para controle de cores */
+:root{
+    --blue-dark: #070A4E;
+    --blue-medium: #252872;
+    --blue-light: #646693;
+    --red: red;
+    --white: #FFFFFF;
+    --black: #000000;
+}

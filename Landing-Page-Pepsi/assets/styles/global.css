@@ -1,0 +1,329 @@
+/* DEV BY VITOR HENRIQUE */
+
+/* Reset para todos os elementos da página */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--blue-dark);
+    color: var(--white);
+    height: 100vh;
+    overflow: hidden;
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+body, button, input, textarea{
+    /* Weight/size/family */
+    font: 400 16px 'Rubik', sans-serif;
+}
+
+button{
+    cursor: pointer;
+}
+
+a{
+    text-decoration: none;
+    /* Pega a cor do pai*/
+    color: inherit;
+}
+
+li{
+    list-style-type: none;
+}
+
+.main-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+  /* Tamanho total do container */
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 15px 16px;
+  
+  /* O menu será fixado na tela, a rolagem irá acontecer apenas 
+  no conteúdo (body) */
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+}
+  
+.header-navigation-container {
+    display: flex;
+    /* Espaçamento entre os elementos */
+    gap: 25px;
+}
+  
+.header-navigation {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+  
+.header-navigation li {
+    font-family: 'Inter', sans-serif;
+  
+    /* Letras maiúsculas */
+    text-transform: uppercase;
+}
+  
+.header-navigation li.active {
+    /* Peso da fonte, quanto maior o peso mais destaque. */
+    font-weight: 600;
+}
+  
+.header-navigation li a {
+    /* Espaço para o toque (mobile), aumentar a área de click (desktop) */
+    padding: 10px;
+}
+
+.purchase-button{
+    /* FONT: abreviação weight-size-family */
+    font: 500 12px 'Inter', sans-serif;
+    text-transform: uppercase;
+    background-color: transparent;
+    color: var(--white);
+    padding: 16px 32px;
+    /* BORDER: abreviação weight-style-color */
+    border: 2px solid var(--white);
+    border-radius: 50px;
+    /* Efeito de transição */
+    transition: background-color 0.5s, border-color 0.5s;
+}
+
+.purchase-button:hover {
+    /* Utyilizar a mesma propriedade do transition */
+    background-color: var(--red);
+    border-color: var(--red);
+}
+
+main{
+    width: 100%;
+    max-width: 1120px;
+    margin: 72px auto 0;
+    padding: 0 16px;
+    display: flex;
+}
+
+.main section{
+    max-width: 645px;
+    padding: left;
+}
+
+.main-title{
+    font-weight: 500;
+    font-size: 48px;   
+}
+
+.main-description{
+    margin-top: 18px;
+    font-weight: 300;
+}
+
+.nutritional-container{
+    margin-top: 47px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.nutritional-title{
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.nutritional-items-container{
+    display: flex;
+    gap: 15px;
+}
+
+.nutritional-items-container li{
+    width: 117px;
+}
+
+.nutritional-items-container li > div{
+    padding: 20px 0;
+    background-color: var(--blue-medium);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.nutritional-items-container li > div strong{
+    font-weight:600;
+    font-size: 24px;
+}
+
+.nutritional-items-container li > footer{
+    padding: 10px 0;
+    background-color: var(--blue-light);
+
+    display: flex;
+    justify-content: center;
+}
+
+.nutritional-detail{
+    font-weight: 300;
+    font-size: 14px;
+    max-width: 375px;
+}
+
+.nutritional-purchase-button{
+    margin-top: 63px;
+}
+
+.pepsi-images-container{
+    flex: 1;
+    /* Relativo: alguém será absoluto em relação a ele. (PAI) */
+    position: relative;
+}
+
+.can-shadow{
+    /* Absoluto (filho): será absoluto em relação a alguém. (PAI) */
+    position: absolute;
+    bottom: 0;
+    right: 202px;
+}
+
+.sombra{
+    position: absolute;
+    right: 0;
+    top: 86%;
+    z-index: -1;
+}
+
+
+.lata-pequena{
+    opacity: 1;
+    z-index: 0;
+    width: 100px;
+    height: auto;
+    position: absolute;
+    top: 130px;
+    left: 250px;
+}
+
+
+.lata-maior{
+    z-index: 1;
+    width: 125px;
+    height: auto;
+    position: absolute;
+    right: 40px;
+    top: 70px;
+    transform: rotate(0deg);
+}
+
+.copo-cheio{
+    opacity: 0;
+    position: absolute;
+    z-index: 1;
+    width: 250px;
+    height: auto;
+    top: 80px;
+    left: -15px;
+    transform: rotate(20deg);
+}
+
+.liquido{
+    opacity: 0;
+    position: absolute;
+    width: 200px;
+    height: auto;
+    top: 20px;
+}
+
+.lata-maior:hover{
+    /* rotate 90deg ele faz um angulo de 90graus */
+    transform: rotate(90deg);
+    top: -65px;
+    /* transição de 1 segundo da lata */
+    transition: ease-out 1s;
+}
+
+/* usamos o ~ quando fazemos concatenação ou seja mexer em mais de 1 prioridade */
+.lata-maior:hover ~ .copo-cheio,
+.lata-maior:hover ~ .liquido{
+    /* opacity esconde ou aparece a imagem */
+    opacity: 1;
+    transition: opacity 5s ease;
+    left: 300px;
+}
+
+/* quando o mouse encostar na lata maior a pequena some */
+.lata-maior:hover ~ .lata-pequena{
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.info-right-bottom-container{
+    background-color: var(--blue-light);
+    padding-bottom: 18px;
+    /* position fixed ela fica colada */
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    max-width: 110px;
+}
+
+.info-right-bottom-container > div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 19px 12px;
+    background-color: var(--blue-medium);
+}
+
+.info-right-bottom-container > div strong{
+    font-weight: 500;
+    font-size: 23px;
+}
+
+.info-right-bottom-container > div small{
+    margin: 2px 0 10px;
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.info-right-bottom-container > div span{
+    font-size: 12px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.social-medias-container{
+    position: fixed;
+    left: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.social-medias-container ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+}
+
+.background-blur{
+    background: #FFFFFF;
+    width: 370px;
+    height: 370px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    /* Filtro para desfocar(esfumaçar) */
+    filter: blur(250px);
+    z-index: -1;
+}
